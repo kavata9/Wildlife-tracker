@@ -19,9 +19,9 @@ public class EndageredAnimalTest {
     assertEquals("Rhino", testEndageredAnimal.getName());
   }
   @Test
-  public void species_instantiatesCorrectly_true() {
-    assertEquals("panda", testEndangeredAnimal.getSpecies());
+  public void equals_returnsTrueIfNameAndAnimalIdAreSame_true() {
+    EndageredAnimal testEndageredAnimal = new EndageredAnimal("Rhino", 1);
+    EndageredAnimal anotherEndageredAnimal = new EndageredAnimal("Rhino", 1);
+    assertTrue(testEndageredAnimal.equals(anotherEndageredAnimal));
   }
-
-
 }
