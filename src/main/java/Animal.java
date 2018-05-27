@@ -36,4 +36,16 @@ public abstract class Animal {
                     && this.getAge().equals(newAnimal.getAge());
         }
     }
+
+    public void save() {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "INSERT INTO animals (name, health, age, species) VALUES (:name, :health, :age, :species)";
+        con.createQuery(sql)
+          .addParameter("name", this.name)
+          .addParameter("health", this.health)
+          .addParameter("age", this.age)
+          .addParameter("species", this.species)
+          .executeUpdate();
+      }
+    }
   }
