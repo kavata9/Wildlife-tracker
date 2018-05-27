@@ -1,22 +1,27 @@
-iimport org.junit.*;
+import org.junit.*;
 import static org.junit.Assert.*;
-import java.util.ArrayList;
-import java.util.List;
 import org.sql2o.*;
 
-public class EndangeredAnimalTest{
-  EndangeredAnimal testEndangeredAnimal;
+public class EndageredAnimalTest {
+
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-  @Before
-  public void setUp(){
-    testEndangeredAnimal = new EndangeredAnimal("fluffy", "panda", "healthy", "young");
+  @Test
+  public void EndageredAnimal_instantiatesCorrectly_true() {
+    EndangeredAnimal testEndageredAnimal = new EndangeredAnimal()("Rhino", 1);
+    assertEquals(true, testEndageredAnimal instanceof EndangeredAnimal);
   }
 
   @Test
-  public void animals_instantiatesCorrectly_true() {
-    assertTrue(testEndangeredAnimal instanceof EndangeredAnimal);
+  public void EndageredAnimal_instantiatesWithName_String() {
+    EndageredAnimal testEndageredAnimal = new EndageredAnimal("Rhino",1);
+    assertEquals("Rhino", testEndageredAnimal.getName());
   }
+  @Test
+  public void species_instantiatesCorrectly_true() {
+    assertEquals("panda", testEndangeredAnimal.getSpecies());
+  }
+
 
 }
