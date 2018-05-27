@@ -44,4 +44,14 @@ public class AnimalTest {
       assertTrue(Animal.all().get(0).equals(testAnimal));
     }
 
+    @Test
+    public void all_returnsAllInstancesOfAnimal_true() {
+      Animal firstAnimal = new Animal("Lion", "healthy", "young");
+      firstAnimal.save();
+      Animal secondAnimal = new Animal("Pantha", "ill", "newborn");
+      secondAnimal.save();
+      assertEquals(true, Animal.all().get(0).equals(firstAnimal));
+      assertEquals(true, Animal.all().get(1).equals(secondAnimal));
+    }
+
 }

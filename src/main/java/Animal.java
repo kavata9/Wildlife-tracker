@@ -48,4 +48,11 @@ public abstract class Animal {
           .executeUpdate();
       }
     }
+
+    public static List<Animal> all() {
+      String sql = "SELECT * FROM animals";
+      try(Connection con = DB.sql2o.open()) {
+       return con.createQuery(sql).executeAndFetch(Animal.class);
+      }
+    }
   }
