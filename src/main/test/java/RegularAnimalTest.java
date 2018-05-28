@@ -93,7 +93,7 @@ public class RegularAnimalTest{
   @Test
   public void delete_deletesSightingAssociations(){
     testRegularAnimal.save();
-    Sighting sighting = new Sighting("here", "Steve");
+    Sighting sighting = new Sighting("Here", "Agnes");
     sighting.save();
     sighting.addAnimal(testRegularAnimal);
     testRegularAnimal.delete();
@@ -103,7 +103,7 @@ public class RegularAnimalTest{
   @Test
   public void getSightings_returnsAllSightings_int(){
     testRegularAnimal.save();
-    Sighting testSighting = new Sighting("Here", "Steve");
+    Sighting testSighting = new Sighting("Here", "Agnes");
     testSighting.save();
     testSighting.addAnimal(testRegularAnimal);
     List savedSightings = testRegularAnimal.getSightings();

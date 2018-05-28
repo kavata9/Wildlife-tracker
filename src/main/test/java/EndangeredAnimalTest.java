@@ -11,7 +11,7 @@ public class EndangeredAnimalTest{
 
   @Before
   public void setUp(){
-    testEndangeredAnimal = new EndangeredAnimal("fluffy", "panda", "healthy", "young");
+    testEndangeredAnimal = new EndangeredAnimal("Lion", "Carnivour", "healthy", "young");
   }
 
   @Test
@@ -31,7 +31,7 @@ public class EndangeredAnimalTest{
 
   @Test
   public void equals_returnsTrueIfPropertiesAreSame_true(){
-    EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("fluffy", "panda", "healthy", "young");
+    EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("Lion", "Carnivour", "healthy", "young");
     assertTrue(testEndangeredAnimal.equals(testEndangeredAnimal2));
   }
 
@@ -50,7 +50,7 @@ public class EndangeredAnimalTest{
   @Test
   public void all_returnsAllInstancesOfPerson_true() {
     testEndangeredAnimal.save();
-    EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("scratchy", "red wolf", "sick", "old");
+    EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("Kiboko", "Black Rhino", "sick", "old");
     testEndangeredAnimal2.save();
     assertEquals(true, EndangeredAnimal.all().get(0).equals(testEndangeredAnimal));
     assertEquals(true, EndangeredAnimal.all().get(1).equals(testEndangeredAnimal2));
@@ -66,7 +66,7 @@ public class EndangeredAnimalTest{
   @Test
   public void find_returnsEndangeredAnimalWithSameId_secondEndangeredAnimal() {
     testEndangeredAnimal.save();
-    EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("scratchy","red wolf", "sick", "old");
+    EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("Kiboko","Black Rhino", "sick", "old");
     testEndangeredAnimal2.save();
     assertEquals(EndangeredAnimal.find(testEndangeredAnimal2.getId()), testEndangeredAnimal2);
   }
@@ -79,7 +79,7 @@ public class EndangeredAnimalTest{
   @Test
   public void findbyName_returnsEndangeredAnimalWithSameName_secondEndangeredAnimal() {
     testEndangeredAnimal.save();
-    EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("scratchy","red wolf", "sick", "adult");
+    EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("Kiboko","Black rhino", "sick", "adult");
     testEndangeredAnimal2.save();
     assertEquals(EndangeredAnimal.findByName(testEndangeredAnimal2.getName()), testEndangeredAnimal2);
   }
@@ -94,7 +94,7 @@ public class EndangeredAnimalTest{
   @Test
   public void delete_deletesSightingAssociations(){
     testEndangeredAnimal.save();
-    Sighting sighting = new Sighting("here", "Steve");
+    Sighting sighting = new Sighting("here", "Agnes");
     sighting.addAnimal(testEndangeredAnimal);
     sighting.save();
     testEndangeredAnimal.delete();
@@ -104,7 +104,7 @@ public class EndangeredAnimalTest{
   @Test
   public void getSightings_returnsAllSightings_int(){
     testEndangeredAnimal.save();
-    Sighting testSighting = new Sighting("Here", "Steve");
+    Sighting testSighting = new Sighting("Here", "Agnes");
     testSighting.save();
     testSighting.addAnimal(testEndangeredAnimal);
     List savedSightings = testEndangeredAnimal.getSightings();
