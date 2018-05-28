@@ -31,5 +31,19 @@ public class SightTest {
     Sighting anotherSighting = new Sighting("Here", 1);
     assertTrue(testSighting.equals(anotherSighting));
   }
+  @Test
+  public void save_returnsTrueIfDescriptionsAretheSame() {
+    Sighting testSighting = new Sighting("Here", 1);
+    testSighting.save();
+    assertTrue(Sighting.all().get(0).equals(testSighting));
+  }
+
+  @Test
+  public void save_assignsIdToSighting() {
+    Sighting testSighting = new Sighting("Here", 1);
+    testSighting.save();
+    Sighting savedSighting = Sighting.all().get(0);
+    assertEquals(savedSighting.getId(), testSighting.getId());
+  }
 
 }
