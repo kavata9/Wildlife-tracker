@@ -19,4 +19,10 @@ public class SightTest {
     assertEquals("Here", testSighting.getName());
   }
 
+  @Test
+  public void Sighting_instantiatesWithAnimalId_int() {
+    Sighting testSighting = new Sighting("Here", 1);
+    assertEquals(1, testSighting.getAnimalId());
+  }
+
 }
