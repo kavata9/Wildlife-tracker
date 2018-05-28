@@ -56,4 +56,13 @@ public class SightTest {
     assertEquals(true, Sighting.all().get(1).equals(secondSighting));
   }
 
+  @Test
+  public void find_returnsSightingWithSameId_secondSighting() {
+    Sighting firstSighting = new Sighting("Here", 1);
+    firstSighting.save();
+    Sighting secondSighting = new Sighting("There", 3);
+    secondSighting.save();
+    assertEquals(SIghting.find(secondSighting.getId()), secondSighting);
+  }
+
 }

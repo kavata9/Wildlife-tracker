@@ -25,6 +25,16 @@ public class Sight {
         return id;
       }
 
+      public static Sight find(int id) {
+        try(Connection con = DB.sql2o.open()) {
+          String sql = "SELECT * FROM sightings where id=:id";
+          Sight sighting = con.createQuery(sql)
+            .addParameter("id", id)
+            .executeAndFetchFirst(Sight.class);
+          return sighting;
+        }
+      }
+
       @Override
       public boolean equals(Object otherSighting){
         if (!(otherSighting instanceof Sight)) {
