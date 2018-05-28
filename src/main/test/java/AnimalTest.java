@@ -1,5 +1,6 @@
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.Arrays;
 
 public class AnimalTest {
 
@@ -70,5 +71,17 @@ public class AnimalTest {
         secondAnimal.save();
       assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
     }
+
+    @Test
+  public void getSightings_retrievesAllSightingsFromDatabase_sightingList() {
+    Animal testAnimal = new Animal("Lion", "healthy", "young");
+    testAnimal.save();
+    Sighting firstSighting = new Sighting("Here", testAnimal.getId());
+    firstSighting.save();
+    Sighting secondSighting = new Sighting("There", testAnimal.getId());
+    secondSighting.save();
+    Sighting[] sightings = new Sighting[] { firstSighting, secondSighting };
+    assertTrue(testAnimal.getSightings().containsAll(Arrays.asList(sightings)));
+  }
 
 }

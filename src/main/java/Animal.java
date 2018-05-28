@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Timestamp;
 
+
 public abstract class Animal {
     public String name;
     public String health;
@@ -67,4 +68,13 @@ public abstract class Animal {
        return con.createQuery(sql).executeAndFetch(Animal.class);
       }
     }
+
+    public List<Sight> getSightings() {
+        try(Connection con = DB.sql2o.open()) {
+          String sql = "SELECT * FROM sightings where animalId=:id";
+          return con.createQuery(sql)
+            .addParameter("id", this.id)
+            .executeAndFetch(Sight.class);
+        }
+      }
   }
