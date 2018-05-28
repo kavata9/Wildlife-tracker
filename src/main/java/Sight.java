@@ -14,5 +14,16 @@ public class Sight {
     public int getAnimalId(){
       return animalId;
     }
+
+    @Override
+  public boolean equals(Object otherSighting){
+    if (!(otherSighting instanceof Sight)) {
+      return false;
+    } else {
+      Sight newSighting = (Sight) otherSighting;
+      return this.getName().equals(newSighting.getName()) &&
+             this.getAnimalId() == newSighting.getAnimalId();
+    }
+  }
   
   }

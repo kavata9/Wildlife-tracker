@@ -25,4 +25,11 @@ public class SightTest {
     assertEquals(1, testSighting.getAnimalId());
   }
 
+  @Test
+  public void equals_returnsTrueIfNameAndAnimalIdAreSame_true() {
+    Sighting testSighting = new Sighting("Here", 1);
+    Sighting anotherSighting = new Sighting("Here", 1);
+    assertTrue(testSighting.equals(anotherSighting));
+  }
+
 }
