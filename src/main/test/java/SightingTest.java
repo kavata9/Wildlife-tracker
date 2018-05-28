@@ -8,9 +8,15 @@ public class SightTest {
   public DatabaseRule database = new DatabaseRule();
 
   @Test
-  public void sight_instantiatesCorrectly_true() {
+  public void Sight_instantiatesCorrectly_true() {
     Sighting testSighting = new Sighting("Here", 1);
     assertEquals(true, testSighting instanceof Sighting);
+  }
+
+  @Test
+  public void Sighting_instantiatesWithName_String() {
+    Sighting testSighting = new Sighting("Here", 1);
+    assertEquals("Here", testSighting.getName());
   }
 
 }
