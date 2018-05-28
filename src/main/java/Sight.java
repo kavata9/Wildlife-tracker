@@ -1,20 +1,21 @@
+import javax.xml.stream.Location;
 import org.sql2o.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Sight {
-    private String name;
+    private String location;
     private int animalId;
     private int id;
   
     public Sight(String name, int animalId) {
-      this.name = name;
+      this.location = location;
       this.animalId = animalId;
     }
   
-    public String getName(){
-      return name;
+    public String getLocation(){
+      return location;
     }
   
     public int getAnimalId(){
@@ -41,16 +42,16 @@ public class Sight {
           return false;
         } else {
           Sight newSighting = (Sight) otherSighting;
-          return this.getName().equals(newSighting.getName()) &&
+          return this.getLocation().equals(newSighting.getLocation()) &&
                  this.getAnimalId() == newSighting.getAnimalId();
         }
       }
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO sightings (name, animalid) VALUES (:name, :animalId)";
+      String sql = "INSERT INTO sightings (location, animalid) VALUES (:name, :animalId)";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("name", this.name)
+        .addParameter("location", this.location)
         .addParameter("animalId", this.animalId)
         .executeUpdate()
         .getKey();
