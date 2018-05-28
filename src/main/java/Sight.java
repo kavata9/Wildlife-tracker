@@ -1,4 +1,8 @@
 import org.sql2o.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Sight {
     private String name;
     private int animalId;
@@ -42,4 +46,12 @@ public class Sight {
         .getKey();
     }
   }
+
+  public static List<Sight> all() {
+    String sql = "SELECT * FROM sightings";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Sight.class);
+    }
+  }
+
   }
